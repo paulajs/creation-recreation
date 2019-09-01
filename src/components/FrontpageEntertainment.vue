@@ -1,8 +1,8 @@
 <template>
-  <div class="hello">
+  <div class="entertain-element">
     <img class="page-logo" alt="page logo" src="../assets/img/SVG/logo.svg">
     <div id="container">
-      <p class="pointsDisplay"></p>
+        <p class="pointsDisplay"></p>
       <audio id="bubbleSounds" src></audio>
       <video
         src
@@ -20,7 +20,13 @@
 <script>
 import * as THREE from "three";
 import * as TWEEN from "tween";
-import {ExplodeAnimation} from '../functions/explosion.js'
+import { ExplodeAnimation } from "../functions/explosion.js";
+import {makeAddSphere} from '../functions/factory.js';
+import {getIntersectingBalls} from '../functions/factory.js';
+import {mouseMoveSetColor} from '../functions/factory.js';
+import {scaleAnimation} from '../functions/factory.js';
+import {getIntersects} from '../functions/factory.js';
+import { log } from "three";
 
 export default {
   name: "FrontpageEntertainment",
@@ -35,6 +41,7 @@ export default {
       gameEnd: false,
       parts: [],
       dirs: [],
+      bubbleBurst: false,
       particles: null,
       movementSpeed: 80,
       pointsDisplay: document.querySelector(".pointsDisplay"),
@@ -67,6 +74,7 @@ export default {
     },
     createScene: function(distance, numBallsX, numBallsY, xMin, yMin, radius) {
       this.scene = new THREE.Scene();
+      this.scene.name = "lol";
       this.scene.fog = new THREE.FogExp2(0xcccccc, 0.0026);
       this.addRenderer();
       this.addCamera(0, 0, 390);
@@ -84,7 +92,7 @@ export default {
       });
     },
     initiateCanvasDesktop: function() {
-      this.createScene(62, 11, 3, -330, -110, 20); /*9, 3*/
+      this.createScene(66, 10, 3, -340, -99, 20); /*68, 10, 3, -340, -99, 25*/
       //distance, numBallsX, numBallsY, xMin, yMin, radius
       this.animate();
       var canvas = document.querySelector("#container");
@@ -95,6 +103,9 @@ export default {
       this.renderer = new THREE.WebGLRenderer({ alpha: true });
       this.renderer.setSize(window.innerWidth, window.innerHeight);
       this.renderer.setPixelRatio(window.devicePixelRatio);
+      this.renderer.domElement.style.position = 'absolute';
+      this.renderer.domElement.style.top = 0;
+      this.renderer.domElement.style.left = 0;
       this.renderer.setClearColor(0x000000, 0);
       var canvascon = document.querySelector("#container");
       canvascon.appendChild(this.renderer.domElement);
@@ -121,47 +132,19 @@ export default {
       for (var i = xMin; i <= xMax; i += distance) {
         for (var j = yMin; j <= yMax; j += distance) {
           var objName = String(i) + String(j);
-          this.makeAddSphere(0xffffff, i, j, 0, radius, objName, count);
+          makeAddSphere(0xffffff, i, j, 0, radius, objName, count, this.scene);
           count = count + 1;
         }
       }
     },
-    makeAddSphere: function(color, posX, posY, posZ, radius, name, delay) {
-      var geometry = new THREE.SphereGeometry(radius, 16, 16);
-      var material = new THREE.MeshPhongMaterial({
-        color: color,
-        transparent: true,
-        opacity: 0.8
-      });
-      var mesh = new THREE.Mesh(geometry, material);
-      mesh.position.x = posX;
-      mesh.position.y = posY;
-      mesh.position.z = posZ;
-      mesh.name = name;
-      mesh.scale.set(0.1, 0.1, 0.1);
-      mesh.geometry.computeBoundingBox();
-      new TWEEN.Tween(mesh.scale)
-        .to(
-          {
-            x: 1,
-            y: 1,
-            z: 1
-          },
-          800
-        )
-        .delay(30 * delay)
-        .easing(TWEEN.Easing.Elastic.Out)
-        .start();
-      this.scene.add(mesh);
-    },
     onDocumentMouseMove: function(event) {
       if (this.isAnimating === false) {
-        let intersects = this.getIntersects(event);
+        let intersects = getIntersects(event, this.camera, this.scene);
         if (intersects.length > 0) {
-          this.mouseMoveSetColor(intersects[0].object.material);
+          mouseMoveSetColor(intersects[0].object.material, this.colorArray);
           document.body.style.cursor = "pointer";
           let num = 2.2 * Math.random() + 0.5;
-          this.scaleAnimation(intersects[0].object, num, 2500);
+          scaleAnimation(intersects[0].object, num, 2500);
         } else {
           document.body.style.cursor = "default";
         }
@@ -181,13 +164,13 @@ export default {
       //sounds.src = "/assets/" + "pop6" + ".mp3";
 
       document.querySelector(".pointsDisplay").style.animation = "none";
-      let intersects = this.getIntersects(event);
+      let intersects = getIntersects(event, this.camera, this.scene);
       let scene = this.scene;
       let pointsDisplay = document.querySelector(".pointsDisplay");
 
       if (intersects.length > 0) {
-        let array = this.getIntersectingBalls(intersects[0].object);
-        this.scaleAnimation(intersects[0].object, 10, 700);
+        let array = getIntersectingBalls(intersects[0].object, this.scene);
+        scaleAnimation(intersects[0].object, 10, 700);
         //sounds.play();
         setTimeout(() => {
           this.isAnimating = false;
@@ -198,26 +181,6 @@ export default {
       } else {
         this.isAnimating = false;
       }
-    },
-    getIntersectingBalls: function(intersectedObject) {
-      let id = intersectedObject.name;
-      let ball1BBox = new THREE.Box3(new THREE.Vector3(), new THREE.Vector3());
-      ball1BBox.setFromObject(intersectedObject);
-      let intersectArray = [];
-      for (let i = 0; i < this.scene.children.length; i++) {
-        if (this.scene.children[i].type == "Mesh" && id != this.scene.children[i].name) {
-          let ball = this.scene.children[i];
-          let ball2BBox = new THREE.Box3(
-            new THREE.Vector3(),
-            new THREE.Vector3()
-          );
-          ball2BBox.setFromObject(ball);
-          if (ball1BBox.intersectsBox(ball2BBox)) {
-            intersectArray.push(ball.name);
-          }
-        }
-      }
-      return intersectArray;
     },
     gameEnded: function() {
       this.gameEnd = false;
@@ -238,14 +201,22 @@ export default {
     bubblePopDesktop: function(elem, array, e, intersects) {
       this.displayPoints(elem, array, e, e.clientX + "px", e.clientY + "px");
       this.removeBallsDesktop(array);
-      this.addFireworks(intersects, 150, 100 + 300 * array.length, this.scene, this.dirs);
+      this.addFireworks(
+        intersects,
+        150,
+        100 + 300 * array.length,
+        this.scene,
+        this.dirs
+      );
     },
     displayPoints: function(elem, array, e, posX, posY) {
       let points = (array.length + 1) * 1000;
+      console.log(elem);
+
       let backgrounds = [
-        "../assets/bubbles/assets/points-background1.svg",
-        "../assets/bubbles/assets/points-background2.svg",
-        "../assets/bubbles/assets/points-background3.svg"
+        require("../assets/bubbles/assets/points-background1.svg"),
+        require("../assets/bubbles/assets/points-background2.svg"),
+        require("../assets/bubbles/assets/points-background3.svg")
       ];
       let randomNum = Math.floor(Math.random() * 3);
       let str = "+" + String(points);
@@ -256,7 +227,7 @@ export default {
       elem.style.webkitTextStroke = "1px #000";
       elem.style.background =
         "url('" + backgrounds[randomNum] + "') no-repeat top left";
-      elem.style.animation = "pointsAnim 1.25s ease-in";
+      //elem.style.animation = "pointsAnim 1.25s ease-in";
     },
     removeBallsDesktop: function(array) {
       for (let i = 0; i < array.length; i++) {
@@ -303,50 +274,32 @@ export default {
       const expPosX = intersects[0].object.position.x;
       const expPosY = intersects[0].object.position.y;
       const expColor = intersects[0].object.material.color.getHex();
-      let particles =  new ExplodeAnimation(expPosX, expPosY, expColor, objectSize, totalObjects, scene, dirs);
-      particles.createPartices();
-      this.parts.push(
-       particles
+      let particles = new ExplodeAnimation(
+        expPosX,
+        expPosY,
+        expColor,
+        objectSize,
+        totalObjects,
+        scene,
+        dirs
       );
-    },
-    getIntersects: function(event) {
-      let mouse = new THREE.Vector2();
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-      let raycaster = new THREE.Raycaster();
-      raycaster.setFromCamera(mouse, this.camera);
-      let intersects = raycaster.intersectObjects(this.scene.children);
-      return intersects;
-    },
-    mouseMoveSetColor: function(objectMaterial) {
-      let randomColorIndex = Math.floor(Math.random() * this.colorArray.length);
-      let colorMaterial = this.colorArray[randomColorIndex];
-      if (objectMaterial.color.getHex() == 0xffffff) {
-        objectMaterial.color.setHex(colorMaterial);
-        objectMaterial.opacity = 1;
-      }
-    },
-    scaleAnimation: function(object, factor, time) {
-      new TWEEN.Tween(object.scale)
-        .to(
-          {
-            x: factor,
-            y: factor,
-            z: factor
-          },
-          time
-        )
-        .easing(TWEEN.Easing.Elastic.Out)
-        .start();
+      particles.createPartices();
+      /*if (this.parts.length > 0) {
+        this.parts.pop();
+      }*/
+      this.parts.push(particles);
+      console.log(this.parts);
     },
     animate: function() {
       requestAnimationFrame(this.animate);
-      this.renderer.render(this.scene, this.camera);
+
       TWEEN.update();
       let pCount = this.parts.length;
+
       while (pCount--) {
         this.parts[pCount].update();
       }
+      this.renderer.render(this.scene, this.camera);
     }
   },
   mounted() {
@@ -382,7 +335,13 @@ a {
   position: absolute;
   top: 0;
   left: 0;
+  .bubbles{
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
+
 .pointsDisplay {
   position: absolute;
   z-index: 1000;
@@ -396,5 +355,17 @@ a {
     top left;
   background-size: cover;
   animation: none;
+}
+.pointsTransition{
+  animation: pointsAnim 1.25s ease-out;
+}
+@keyframes pointsAnim{
+	0%{
+        display: block;
+		transform: scale(0);
+	}
+	100%{
+		transform: scale(2);
+    }
 }
 </style>
