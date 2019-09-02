@@ -1,7 +1,7 @@
 <template>
   <div class="case-hesehus">
     <CasesAboveTheFold />
-    <CasesResult/>
+    <CasesResult videoname="matas video" />
     <CasesProcess/>
   </div>
 </template>

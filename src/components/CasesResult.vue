@@ -7,7 +7,7 @@
       <h2 class="result-header">Videos</h2>
       <div class="video-section">
         <div class="video-section-header">
-          <h4 class="matas-header">Matas video</h4>
+          <h4 class="matas-header">{{videoname}}</h4>
         </div>
         <video class="case-video" src="../assets/videos/hesehus/Matas1.mp4"></video>
       </div>
@@ -78,6 +78,7 @@
 </style>
 <script>
 export default {
-  name: "CasesResult"
+  name: "CasesResult",
+  props:['videoname']
 };
 </script>
