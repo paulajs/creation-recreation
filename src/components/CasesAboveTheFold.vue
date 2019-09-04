@@ -2,12 +2,13 @@
   <div class="above-the-fold">
     <h1>Hesehus</h1>
     <router-link class="case-home-button" to="/">
-      <button>Home</button>
+      <HomeButton/>
     </router-link>
     <h2>Motion graphics and React</h2>
     <div class="info-box info-about">
       <h3>About</h3>
-      <p>Hesehus is the largest e-commerce solution provider
+      <p>
+        Hesehus is the largest e-commerce solution provider
         in Denmark. This project was part of my exam at MMD, and additional
         freelance work after the exam.
       </p>
@@ -35,6 +36,7 @@
   </div>
 </template>
 <style lang="scss">
+$transition: all 0.1s ease-in;
 .above-the-fold {
   display: grid;
   grid-template-rows: repeat(18, 4.94vh);
@@ -42,6 +44,13 @@
   grid-template-columns: repeat(24, 3.125vw);
   grid-column-gap: 1vw;
   margin: 2vh 1vw;
+  .case-home-button {
+    grid-column-start: 24;
+    grid-row-start: 1;
+    justify-self: end;
+    align-self: start;
+    transform: translate(-26px, 8px);
+  }
   h1 {
     grid-column-start: 2;
     grid-column-end: 8;
@@ -51,24 +60,7 @@
     color: black;
     margin-left: -0.067em;
   }
-  .case-home-button{
-    grid-column-start: 24;
-    grid-row-start: 1;
-    justify-self: end;
-    align-self: start;
-    transform: translate(-26px, 8px);
-  }
-  button {
-    border-radius: 100%;
-    width: 83px;
-    height: 83px;
-    border: none;
-    background: black;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    font-size: 19px;
-    font-weight: 800;
-  }
+
   h2 {
     grid-column-start: 2;
     grid-column-end: 5;
@@ -92,7 +84,6 @@
       font-family: "Poppins", sans-serif;
       font-size: 21px;
     }
-
     p {
       grid-column-start: 2;
       grid-column-end: 8;
@@ -112,9 +103,34 @@
     grid-column-end: 25;
   }
 }
+@keyframes rumble{
+    0%{
+      transform: translate3D(0px, 0px,0);
+    }
+    10%{
+      transform: translate3D(1px, 0.5px,0);
+    }
+    40%{
+      transform: translate3D(0px, 0px,0);
+    }
+    60%{
+      transform: translate3D(-1px, 1px,0);
+    }
+    80%{
+      transform: translate3D(0px, 0.5px,0);
+    }
+    100%{
+      transform: translate3D(1px, 0px,0);
+    }
+  }
+
 </style>
 <script>
+import HomeButton from "@/components/HomeButton.vue";
 export default {
-  name: "CasesAboveThefold"
+  name: "CasesAboveThefold",
+  components: {
+    HomeButton
+  }
 };
 </script>

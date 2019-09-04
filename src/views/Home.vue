@@ -10,7 +10,7 @@
       <p data-text="Cases">Cases</p>
     </button>
     <ul class="cases-sub-menu">
-      <li>
+      <li @mouseover="hoverOverLink" @mouseout="leaveLink">
         <router-link to="/hesehus">Hesehus</router-link>
       </li>
       <li>
@@ -57,6 +57,18 @@ export default {
     FrontpageEntertainment
   },
   methods: {
+    hoverOverLink: function(){
+      //conditional rendering - v-if
+      console.log('hover link');
+      document.querySelector('.case-videos').style.display = "block";
+      document.querySelector('#container').style.display = "none";
+      document.querySelector('.page-logo').style.display = "none";
+    },
+    leaveLink: function(){
+      document.querySelector('.case-videos').style.display = "none";
+      document.querySelector('#container').style.display = "block";
+      document.querySelector('.page-logo').style.display = "block";
+    },
     expandCursor: function() {
       cursor.classList.add("expand");
       setTimeout(() => {

@@ -1,5 +1,6 @@
 <template>
   <div class="case-process">
+    <h2>Process</h2>
     <div class="process-inspiration">
       <div class="case-section-header header-inspiration">
         <h5>Inspiration</h5>
@@ -38,6 +39,13 @@
 </template>
 <style lang="scss">
 .case-process {
+  h2{
+    font-family: "Poppins", sans-serif;
+    font-size: 150px;
+    color: black;
+    margin-left: 4.75vw;
+    margin-top: 4vh;
+  }
   .process-inspiration {
     grid-row-start: 3;
     font-family: "Source Code Pro", monospace;

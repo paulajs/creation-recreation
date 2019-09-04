@@ -1,11 +1,12 @@
 <template>
   <div class="entertain-element">
+    <video  class="case-videos" muted autoplay loop src="../assets/videos/frontpage-entertain/hesehus1.mp4"></video>
     <img class="page-logo" alt="page logo" src="../assets/img/SVG/logo.svg">
     <div id="container">
         <p class="pointsDisplay"></p>
       <audio id="bubbleSounds" src></audio>
       <video
-        src
+        src = ""
         id="full-screen-win"
         type="video/mp4"
         preload="auto"
