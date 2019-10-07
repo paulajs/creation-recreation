@@ -19,9 +19,6 @@
       <li>
         <router-link to="/skansing">Skansing IT</router-link>
       </li>
-      <li>
-        <router-link to="/dradams">Dr Adams</router-link>
-      </li>
     </ul>
     <div class="menu menu-some">
       <a href="/">
@@ -61,11 +58,13 @@ export default {
       //conditional rendering - v-if
       console.log('hover link');
       document.querySelector('.case-videos').style.display = "block";
+      document.querySelector('.entertain-element').style.border = "1px solid black";
       document.querySelector('#container').style.display = "none";
       document.querySelector('.page-logo').style.display = "none";
     },
     leaveLink: function(){
       document.querySelector('.case-videos').style.display = "none";
+      document.querySelector('.entertain-element').style.border = "none";
       document.querySelector('#container').style.display = "block";
       document.querySelector('.page-logo').style.display = "block";
     },
@@ -104,12 +103,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@import '../assets/sass/_global.scss';
 .cursor:hover + button p,
 button:hover p {
   color: white;
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: #ff00ff;
+  -webkit-text-stroke-color: $color-pink;
 }
 .cursor:hover + button p:after,
 button:hover p:after {
@@ -117,7 +116,7 @@ button:hover p:after {
   position: absolute;
   color: transparent;
   -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #00ff66;
+  -webkit-text-stroke-color: $color-green;
   left: 1.5%;
   top: 1.5%;
   animation: rumble 0.3s ease-in infinite;
@@ -159,28 +158,6 @@ button:hover p:after {
   }
   100% {
     transform: scale(0.93);
-  }
-}
-
-@keyframes rumble {
-  0% {
-    transform: translate3D(0px, 0px);
-  }
-  10% {
-    transform: translate3D(1px, 0.5px);
-  }
-  40% {
-    transform: translate3D(0px, 0px);
-    color: white;
-  }
-  60% {
-    transform: translate3D(-1px, 1px);
-  }
-  80% {
-    transform: translate3D(0px, 0.5px);
-  }
-  100% {
-    transform: translate3D(1px, 0px);
   }
 }
 

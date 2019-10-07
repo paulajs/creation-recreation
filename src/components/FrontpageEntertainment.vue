@@ -1,6 +1,6 @@
 <template>
   <div class="entertain-element">
-    <video  class="case-videos" muted autoplay loop src="../assets/videos/frontpage-entertain/hesehus1.mp4"></video>
+    <video  class="case-videos" muted loop autoplay src="../assets/videos/frontpage-entertain/case-vid-test2.mp4"></video>
     <img class="page-logo" alt="page logo" src="../assets/img/SVG/logo.svg">
     <div id="container">
         <p class="pointsDisplay"></p>
@@ -54,9 +54,9 @@ export default {
         0xff4dff,
         0xff66ff,
         0xff7fff,
-        0x14f459,
-        0x2eff73,
-        0x47ff8c,
+        0x00cf78,
+        0x00ffb6,
+        0x75f9d0,
         0x61ffa6,
         0x7affbf,
         0x93ffd8,
@@ -82,7 +82,7 @@ export default {
 
       this.addLight(0xffffff, 50, 200, 200);
       this.addLight(0xff00ff, 20, 500, -600);
-      this.addLight(0x14f459, 300, 300, 50);
+      this.addLight(0x00ffb6, 300, 300, 50);
 
       this.AddGameBall(xMin, yMin, numBallsX, numBallsY, distance, radius);
 

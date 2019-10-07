@@ -26,8 +26,11 @@ $transition: all 0.1s ease-in;
   }
   &:hover {
     transition: $transition;
-    transform: scale(1.1);
+    transform: scale(1.4);
     cursor: pointer;
+
+    margin-right: 5px;
+    margin-top: 5px;
   }
   &:hover p {
     -webkit-text-stroke-width: 1px;
@@ -41,7 +44,7 @@ $transition: all 0.1s ease-in;
     position: absolute;
     color: transparent;
     -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #00ff66;
+    -webkit-text-stroke-color: #00ffc8;
     animation: rumble 0.3s ease-in infinite;
   }
 }

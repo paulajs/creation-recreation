@@ -17,7 +17,7 @@ body {
     grid-column-end: 12;
     overflow: hidden;
     .case-videos{
-      width: 114%;
+      width: 100%;
       display: none;
     }
 }
@@ -58,7 +58,7 @@ body {
   font-family: $font-secundary;
   font-weight: 300;
   font-size: 14px;
-  width: 13.5vw;
+  width: 15.5vw;
   text-align: center;
   z-index: 1000;
 }
