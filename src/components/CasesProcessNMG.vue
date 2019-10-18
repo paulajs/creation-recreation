@@ -11,7 +11,7 @@
           Also inspiration from premium and retro products. And of course inspiration
           from Nørremadegaard itself."
       />
-      <Slider />
+      <Slider :images="sliderImages" />
       <CaseTextSection
         sectionClass = "case-text-section experimentation-nmg"
         sectionHeaderClass="case-section-header header-experimentation-nmg"
@@ -97,8 +97,30 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import CaseTextSection from "@/components/CaseTextSection.vue";
+import sliderImageOne from '@/assets/img/nmg-premium.jpg'
+import sliderImageTwo from '@/assets/img/nmg-retro.jpg'
+import sliderImageThree from '@/assets/img/mood-nmg-100.jpg'
+
 export default {
   name: "CasesProcessNMG",
+  data() {
+    return {
+      sliderImages: [
+        {
+          path: sliderImageOne,
+          altText: "premium inspiration",
+        },
+        {
+          path: sliderImageTwo,
+          altText: "retro inspiration",
+        },
+        {
+          path: sliderImageThree,
+          altText: "mood inspiration",
+        }
+      ]
+    }
+  },
   components: {
     Slider,
     CaseTextSection

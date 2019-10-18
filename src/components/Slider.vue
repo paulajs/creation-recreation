@@ -251,34 +251,18 @@
 }
 </style>
 <script>
-import sliderImageOne from '@/assets/img/nmg-premium.jpg'
-import sliderImageTwo from '@/assets/img/nmg-retro.jpg'
-import sliderImageThree from '@/assets/img/mood-nmg-100.jpg'
-
 export default {
   name: "Slider",
+  props: {
+    images: Array,
+  },
   data() {
-    const images= [
-      {
-        path: sliderImageOne,
-        altText: "premium inspiration",
-      },
-      {
-        path: sliderImageTwo,
-        altText: "retro inspiration",
-      },
-      {
-        path: sliderImageThree,
-        altText: "mood inspiration",
-      }
-    ];
     const radius= 8;
-    const lengthOfLine = radius * 2 * images.length + (70 * images.length - 2);
+    const lengthOfLine = radius * 2 * this.images.length + (70 * this.images.length - 2);
     const x = lengthOfLine - 2 * parseInt(radius);
-    const y = images.length - 2 + 1;
+    const y = this.images.length - 2 + 1;
 
     return {
-      images: images,
       index: 0,
       len: x / y,
     };
@@ -287,7 +271,7 @@ export default {
     getIndicatorXPosition(index) {
       return this.len * index + index
     },
-    next: function() {
+    next() {
       const index = this.index + 1;
       if (index == this.images.length) {
         this.index = 0;
@@ -295,7 +279,7 @@ export default {
         this.index = index;
       }
     },
-    previous: function(i, sliderimages) {
+    previous() {
       const index = this.index - 1;
       if (index < 0) {
         this.index = this.images.length - 1;
