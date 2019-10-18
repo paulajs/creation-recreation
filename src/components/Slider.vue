@@ -1,9 +1,8 @@
 <template>
   <div class="slider">
     <div class="nav-right">
-      <button class="nav-slider-button" data-direction="right" v-on:click="sliderButtonHandler">
+      <button class="nav-slider-button" v-on:click="next">
         <svg class="arrow-slider" viewBox="0 0 23.75 4.71">
-          <title>arrow right</title>
           <polygon
             points="23.75 2.35 14.98 0 14.98 1.6 0 1.6 0 3.1 14.98 3.1 14.98 4.71 23.75 2.35"
           />
@@ -12,14 +11,17 @@
       </button>
     </div>
     <div class="image-container">
-      <img src="../assets/img/nmg-premium.jpg" class="active" data-active="true" alt="nmg-img" />
-      <img src="../assets/img/nmg-retro.jpg" class="inactive" data-active="false" alt="nmg-img" />
-      <img src="../assets/img/mood-nmg-100.jpg" class="inactive" data-active="false" alt="nmg-img" />
+      <img
+        v-for="(image, key) in images"
+        v-bind:key="image.id"
+        :src="image.path"
+        :alt="image.altText"
+        :class="(key == index ? 'active' + ' image-anim' : 'inactive')"
+      />
     </div>
     <div class="nav-left">
-      <button class="nav-slider-button" data-direction="left" v-on:click="sliderButtonHandler">
+      <button class="nav-slider-button" v-on:click="previous">
         <svg class="arrow-slider" viewBox="0 0 23.75 4.71">
-          <title>arrow left</title>
           <polygon points="0 2.35 8.78 4.71 8.78 3.1 23.75 3.1 23.75 1.6 8.78 1.6 8.78 0 0 2.35" />
         </svg>
         <p class="nav-slider-button-text" data-text="Previous">Previous</p>
@@ -27,9 +29,15 @@
     </div>
     <div class="nav-overview">
       <svg class="navigation-bar" viewBox="-10 0 262 31">
-        <title>nav-overview-slider</title>
         <line x1="-5" y1="13.98" x2="248" y2="13.98" stroke="black"/>
-        <circle v-for="posX in posXArray" v-bind:key="posX.id" class="cls-1 item" :cx= "posX" cy="13.98" r="8" />
+        <circle
+          v-for="(image, key) in images"
+          v-bind:key="image.id"
+          :class="'slide-indicator ' + (key == index ? 'slide-active-indicator' : '')"
+          :cx="getIndicatorXPosition(key)"
+          cy="13.98"
+          r="8"
+        />
       </svg>
     </div>
   </div>
@@ -109,11 +117,15 @@
   transform: translate(-50%, -50%);
   transition: all 0.2s ease-in;
 }
-.cls-1 {
+.slide-indicator {
   fill: white;
   stroke: #000;
   stroke-miterlimit: 10;
   stroke-width: 1px;
+}
+
+.slide-active-indicator {
+  fill: black;
 }
 
 .slider {
@@ -239,117 +251,57 @@
 }
 </style>
 <script>
+import sliderImageOne from '@/assets/img/nmg-premium.jpg'
+import sliderImageTwo from '@/assets/img/nmg-retro.jpg'
+import sliderImageThree from '@/assets/img/mood-nmg-100.jpg'
+
 export default {
   name: "Slider",
   data() {
-    const prefix= "../assets/img/";
-    const imgArray= ["nmg-premium.jpg", "nmg-retro.jpg", "mood-nmg-100.jpg"];
+    const images= [
+      {
+        path: sliderImageOne,
+        altText: "premium inspiration",
+      },
+      {
+        path: sliderImageTwo,
+        altText: "retro inspiration",
+      },
+      {
+        path: sliderImageThree,
+        altText: "mood inspiration",
+      }
+    ];
     const radius= 8;
-    const lengthOfLine = radius * 2 * imgArray.length + (70 * imgArray.length - 2);
+    const lengthOfLine = radius * 2 * images.length + (70 * images.length - 2);
     const x = lengthOfLine - 2 * parseInt(radius);
-    const y = imgArray.length - 2 + 1;
-    const len = x / y;
-    const posXArray = [len * 0 + parseInt(0), len * 1 + parseInt(1), len * 2 + parseInt(2)];
+    const y = images.length - 2 + 1;
 
     return {
-      prefix: prefix,
-      imgArray: imgArray,
+      images: images,
       index: 0,
-      currentButton: null,
-      radius: radius,
-      lengthOfLine: lengthOfLine,
-      x : x,
-      y: y,
-      len: len,
-      posXArray: posXArray,
+      len: x / y,
     };
   },
-  mounted(){
-    this.init();
-  },
   methods: {
-    init: function(){
-      let circleActive = document.querySelectorAll(".item")[0];
-      circleActive.style.fill = "black";
+    getIndicatorXPosition(index) {
+      return this.len * index + index
     },
-    sliderButtonHandler: function(e) {
-      this.clickedButton(e);
-      const buttonText = this.currentButton.querySelector(
-        ".nav-slider-button-text"
-      );
-      this.sliderButtonAddAnimation(buttonText);
-      this.sliderButtonRemoveAnimation(buttonText);
-      console.log(this.currentButton.dataset);
-      if (this.currentButton.dataset.direction == "right") {
-        this.changeImage(this.changeNext);
-      } else {
-        this.changeImage(this.changePrev);
-      }
-    },
-    sliderButtonAddAnimation: function(buttonText) {
-      buttonText.style.display = "none";
-      this.currentButton.classList.add("clickAnim");
-    },
-    sliderButtonRemoveAnimation: function(buttonText) {
-      setTimeout(() => {
-        this.currentButton.classList.remove("clickAnim");
-        buttonText.style.display = "block";
-        let imageSliderImg = document
-          .querySelector(".image-container img")
-          .classList.remove("image-anim");
-      }, 400);
-    },
-    clickedButton: function(e) {
-      if (e.target.tagName == "P") {
-        this.currentButton = e.target.parentElement;
-      } else {
-        this.currentButton = e.target;
-      }
-    },
-    changeImage: function(func) {
-      const sliderImgArray= document.querySelector(".image-container").children;
-      for (let i = 0; i < sliderImgArray.length; i++) {
-        if (sliderImgArray[i].dataset.active == "true") {
-          func(i, sliderImgArray);
-        }
-      }
-      this.setData(sliderImgArray);
-      this.setStylingFromData(sliderImgArray);
-    },
-    setData: function(sliderImgArray) {
-      for (let i = 0; i < sliderImgArray.length; i++) {
-        sliderImgArray[i].dataset.active = "false";
-      }
-      sliderImgArray[this.index].dataset.active = "true";
-    },
-    setStylingFromData: function(sliderImgArray) {
-      for (let i = 0; i < sliderImgArray.length; i++) {
-        sliderImgArray[i].classList = "";
-        sliderImgArray[i].classList.add("inactive");
-      }
-      sliderImgArray[this.index].classList.replace("inactive", "active");
-      sliderImgArray[this.index].classList.add("image-anim");
-    },
-    changeNext: function(i, sliderImgArray) {
-      this.index = i + 1;
-      if (this.index == sliderImgArray.length) {
+    next: function() {
+      const index = this.index + 1;
+      if (index == this.images.length) {
         this.index = 0;
+      } else {
+        this.index = index;
       }
-      this.fillNavCircle(this.index);
     },
-    changePrev: function(i, sliderImgArray) {
-      this.index = i - 1;
-      if (this.index < 0) {
-        this.index = sliderImgArray.length - 1;
+    previous: function(i, sliderimages) {
+      const index = this.index - 1;
+      if (index < 0) {
+        this.index = this.images.length - 1;
+      } else {
+        this.index = index;
       }
-      this.fillNavCircle(this.index);
-    },
-    fillNavCircle: function(index) {
-      let circles = document.querySelectorAll(".item");
-      for (let j = 0; j < circles.length; j++) {
-        circles[j].style.fill = "white";
-      }
-      circles[this.index].style.fill = "black";
     }
   }
 };
