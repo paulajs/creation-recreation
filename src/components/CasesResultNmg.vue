@@ -11,6 +11,8 @@
         </div>
       </div>
       <h2 class="result-header">3D models</h2>
+      <ThreeNmgDisplay/>
+
     </div>
   </div>
 </template>
@@ -26,7 +28,7 @@ $transition: all 0.1s ease-in;
 
   .display-results {
     display: grid;
-    grid-template-rows: repeat(110, 4.94vh);
+    grid-template-rows: repeat(46, 4.94vh);
     grid-row-gap: 1vh;
     grid-template-columns: repeat(24, 3.125vw);
     grid-column-gap: 1vw;
@@ -36,7 +38,7 @@ $transition: all 0.1s ease-in;
       grid-column-start: 1;
       grid-column-end: 25;
       grid-row-start: 1;
-      grid-row-end: 11;
+      grid-row-end: 12;
       background: linear-gradient(#ff90ff -29%, #2f97b3 152%);
       display: grid;
     grid-template-rows: repeat(30, 4.94vh);
@@ -49,7 +51,9 @@ $transition: all 0.1s ease-in;
         grid-column-end: 24;
         font-family: $font-primary;
         color: white;
-        font-size: 87px
+        font-size: 87px;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
       }
       .postits {
         grid-column-start: 2;
@@ -77,3 +81,13 @@ $transition: all 0.1s ease-in;
   }
 }
 </style>
+<script>
+import ThreeNmgDisplay from "@/components/ThreeNmgDisplay.vue";
+
+export default {
+  name: "CasesResultNmg",
+  components: {
+    ThreeNmgDisplay
+  }
+};
+</script>

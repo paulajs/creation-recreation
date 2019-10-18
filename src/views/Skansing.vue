@@ -9,16 +9,17 @@
         the cyber punk universe. The hacker cliches were kept to a minimum. Since the brand is not with suit-and-ties company,
         but a freelance hacker in a hoodie, the pop culture inspiration feels suitable."
     />
+    <CasesResultSkansing/>
   </div>
 </template>
 <script>
 import CasesAboveTheFold from "@/components/CasesAboveTheFold.vue";
-//import CasesResult from "@/components/CasesResult.vue";
-import CasesProcess from "@/components/CasesProcess.vue";
+import CasesResultSkansing from "@/components/CasesResultSkansing.vue";
 export default {
   name: "Skansing",
   components: {
     CasesAboveTheFold,
+    CasesResultSkansing
   }
 };
 </script>

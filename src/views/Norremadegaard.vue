@@ -15,18 +15,20 @@
                   to both parents and the children."
     />
     <CasesResultNmg />
+    <CasesProcessNMG />
   </div>
 </template>
 
 <script>
 import CasesAboveTheFold from "@/components/CasesAboveTheFold.vue";
 import CasesResultNmg from "@/components/CasesResultNmg.vue";
-import CasesProcess from "@/components/CasesProcess.vue";
+import CasesProcessNMG from "@/components/CasesProcessNMG.vue";
 export default {
   name: "nmg",
   components: {
     CasesAboveTheFold,
-    CasesResultNmg
+    CasesResultNmg,
+    CasesProcessNMG
   }
 };
 </script>

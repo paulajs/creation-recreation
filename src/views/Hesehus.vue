@@ -18,20 +18,20 @@
         an interface."
     />
     <CasesResultHesehus/>
-    <CasesProcess/>
+    <CasesProcessHesehus/>
   </div>
 </template>
 </style>
 <script>
 import CasesAboveTheFold from "@/components/CasesAboveTheFold.vue";
 import CasesResultHesehus from "@/components/CasesResultHesehus.vue";
-import CasesProcess from "@/components/CasesProcess.vue";
+import CasesProcessHesehus from "@/components/CasesProcessHesehus.vue";
 export default {
   name: "Hesehus",
   components: {
     CasesAboveTheFold,
     CasesResultHesehus,
-    CasesProcess
+    CasesProcessHesehus
   }
 };
 </script>
