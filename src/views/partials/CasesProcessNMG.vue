@@ -23,9 +23,9 @@
         of splatter is used to represent dropped jam, a likely occurence
         with children in the kitchen ;-) "
       />
-      <img class="nmg-exp1" src="../assets/img/exp1-100.jpg" alt />
-      <img class="nmg-exp2" src="../assets/img/exp2-100.jpg" alt />
-      <img class="nmg-exp3" src="../assets/img/exp3-100.jpg" alt />
+      <img class="nmg-exp1" src="@/assets/img/exp1-100.jpg" alt />
+      <img class="nmg-exp2" src="@/assets/img/exp2-100.jpg" alt />
+      <img class="nmg-exp3" src="@/assets/img/exp3-100.jpg" alt />
 
       <CaseTextSection
         sectionClass="case-text-section styletiles-nmg"
@@ -34,7 +34,7 @@
         textClass="styletiles-text-nmg"
         sectionText="The final version of the visual identity, that is going to be applied to the course materials."
       />
-      <img class="nmg-styletiles" src="../assets/img/NMG-styletiles.jpg" alt />
+      <img class="nmg-styletiles" src="@/assets/img/NMG-styletiles.jpg" alt />
     </div>
   </div>
 </template>

@@ -10,8 +10,8 @@
         sectionText="Moodboard of Hesehus’ visual identity and research of e-commerce fairs."
       />
 
-      <img class="hesehus-indtryk" src="../assets/img/hesehus-indtryk.jpg" alt />
-      <img class="hesehus-messe" src="../assets/img/hesehus-messe.jpg" alt />
+      <img class="hesehus-indtryk" src="@/assets/img/hesehus-indtryk.jpg" alt />
+      <img class="hesehus-messe" src="@/assets/img/hesehus-messe.jpg" alt />
       <CaseTextSection
         sectionClass = "case-text-section experimentation-hesehus"
         sectionHeaderClass="case-section-header header-experimentation-hesehus"
@@ -21,9 +21,9 @@
         development of graphic universe for the cases."
       />
 
-      <img class="hesehus-boat" src="../assets/img/hesehus-boat.png" alt />
-      <img class="hesehus-space" src="../assets/img/hesehus-space.png" alt />
-      <img class="hesehus-ideation" src="../assets/img/hesehus-ideation.jpg" alt />
+      <img class="hesehus-boat" src="@/assets/img/hesehus-boat.png" alt />
+      <img class="hesehus-space" src="@/assets/img/hesehus-space.png" alt />
+      <img class="hesehus-ideation" src="@/assets/img/hesehus-ideation.jpg" alt />
 
       <CaseTextSection
         sectionClass = "case-text-section storyboards-hesehus"
@@ -34,12 +34,12 @@
       />
       <img
         class="hesehus-storyboard-inspiration"
-        src="../assets/img/hesehus-storyboard-inspiration.png"
+        src="@/assets/img/hesehus-storyboard-inspiration.png"
         alt
       />
       <img
         class="hesehus-storyboard-fristads-kansas"
-        src="../assets/img/hesehus-storyboard-danoffice.png"
+        src="@/assets/img/hesehus-storyboard-danoffice.png"
         alt
       />
     </div>

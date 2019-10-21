@@ -26,7 +26,7 @@
         textClass="styletiles-text-skansing"
         sectionText="Final version of the visual identity that is going to be applied to the webpage."
       />
-      <img src="../assets/img/skansing-style.jpg" class="skansing-style-img" alt="">
+      <img src="@/assets/img/skansing-style.jpg" class="skansing-style-img" alt="">
     </div>
   </div>
 </template>

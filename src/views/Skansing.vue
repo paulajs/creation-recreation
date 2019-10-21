@@ -14,9 +14,9 @@
   </div>
 </template>
 <script>
-import CasesAboveTheFold from "@/components/CasesAboveTheFold.vue";
-import CasesResultSkansing from "@/components/CasesResultSkansing.vue";
-import CasesProcessSkansing from "@/components/CasesProcessSkansing.vue"
+import CasesAboveTheFold from "@/views/partials/CasesAboveTheFold.vue";
+import CasesResultSkansing from "@/views/partials/CasesResultSkansing.vue";
+import CasesProcessSkansing from "@/views/partials/CasesProcessSkansing.vue"
 export default {
   name: "Skansing",
   components: {

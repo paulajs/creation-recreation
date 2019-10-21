@@ -8,26 +8,26 @@
       <div class="skansing-result-header">
         <h4>Mobile mockup</h4>
       </div>
-      <img class="mobile-mock1" src="../assets/img/mobmock11.png" alt />
-      <img class="mobile-mock2" src="../assets/img/mobmock22.png" alt />
+      <img class="mobile-mock1" src="@/assets/img/mobmock11.png" alt />
+      <img class="mobile-mock2" src="@/assets/img/mobmock22.png" alt />
     </div>
     <div class="desktop-mockup1-skansing">
       <div class="skansing-result-header">
         <h4>Desktop mockup version 1</h4>
       </div>
-      <img class="desktop-mock1" src="../assets/img/skansing-desk-first1.png" alt />
+      <img class="desktop-mock1" src="@/assets/img/skansing-desk-first1.png" alt />
     </div>
-    <video @mouseover="eventVideo" @mouseleave="eventVideoLeave" class="skansing-video" muted loop src="../assets/videos/skansing/skansingvid44.mp4"></video>
+    <video @mouseover="eventVideo" @mouseleave="eventVideoLeave" class="skansing-video" muted loop src="@/assets/videos/skansing/skansingvid44.mp4"></video>
     <div class="desktop-mockup2-skansing">
       <div class="skansing-result-header">
         <h4>Desktop mockup version 2</h4>
       </div>
-      <img class="desktop-mock2" src="../assets/img/skansing-desk-fin2.png" alt />
+      <img class="desktop-mock2" src="@/assets/img/skansing-desk-fin2.png" alt />
     </div>
   </div>
 </template>
 <style lang="scss" scoped>
-@import "../assets/sass/_global.scss";
+@import "@/assets/sass/_global.scss";
 .cases-result-skansing {
   display: flex;
   flex-direction: column;

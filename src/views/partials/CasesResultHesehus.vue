@@ -35,13 +35,13 @@
       />
       <div class="mockup-hesehus">
         <h4>Mockup of the React.js app.</h4>
-        <img src="../assets/img/hesehus-app-mock.png" alt />
+        <img src="@/assets/img/hesehus-app-mock.png" alt />
       </div>
     </div>
   </div>
 </template>
 <style lang="scss">
-@import "../assets/sass/_global.scss";
+@import "@/assets/sass/_global.scss";
 
 $transition: all 0.1s ease-in;
 
@@ -98,16 +98,16 @@ $transition: all 0.1s ease-in;
 import VideoCaseComponent from "@/components/VideoCaseComponent.vue";
 import ButtonVisitPage from "@/components/ButtonVisitPage.vue";
 
-const matasVideo = require("../assets/videos/hesehus/Matas1.mp4");
-const matasPoster = require("../assets/videos/hesehus/Matas1.png");
-const fristadsVideo = require("../assets/videos/hesehus/Fristads-kansas1.mp4");
-const fristadsPoster = require("../assets/videos/hesehus/Fristads-kansas1.png");
-const inspirationVideo = require("../assets/videos/hesehus/Inspiration1.mp4");
-const inspirationPoster = require("../assets/videos/hesehus/Inspiration1.png");
-const danofficeVideo = require("../assets/videos/hesehus/Danoffice1.mp4");
-const danofficePoster = require("../assets/videos/hesehus/Danoffice1.png");
-const journeyVideo = require("../assets/videos/hesehus/Kunderejse1.mp4");
-const journeyPoster = require("../assets/videos/hesehus/Kunderejse1.png");
+const matasVideo = require("@/assets/videos/hesehus/Matas1.mp4");
+const matasPoster = require("@/assets/videos/hesehus/Matas1.png");
+const fristadsVideo = require("@/assets/videos/hesehus/Fristads-kansas1.mp4");
+const fristadsPoster = require("@/assets/videos/hesehus/Fristads-kansas1.png");
+const inspirationVideo = require("@/assets/videos/hesehus/Inspiration1.mp4");
+const inspirationPoster = require("@/assets/videos/hesehus/Inspiration1.png");
+const danofficeVideo = require("@/assets/videos/hesehus/Danoffice1.mp4");
+const danofficePoster = require("@/assets/videos/hesehus/Danoffice1.png");
+const journeyVideo = require("@/assets/videos/hesehus/Kunderejse1.mp4");
+const journeyPoster = require("@/assets/videos/hesehus/Kunderejse1.png");
 export default {
   name: "CasesResultHesehus",
   methods: {

@@ -23,9 +23,9 @@
 </template>
 </style>
 <script>
-import CasesAboveTheFold from "@/components/CasesAboveTheFold.vue";
-import CasesResultHesehus from "@/components/CasesResultHesehus.vue";
-import CasesProcessHesehus from "@/components/CasesProcessHesehus.vue";
+import CasesAboveTheFold from "@/views/partials/CasesAboveTheFold.vue";
+import CasesResultHesehus from "@/views/partials/CasesResultHesehus.vue";
+import CasesProcessHesehus from "@/views/partials/CasesProcessHesehus.vue";
 export default {
   name: "Hesehus",
   components: {

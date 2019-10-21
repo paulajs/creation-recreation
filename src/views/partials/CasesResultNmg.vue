@@ -4,10 +4,10 @@
       <div class="nmg-design-obj">
         <h2>Design objectives</h2>
         <div class="postits">
-          <img src="../assets/img/SVG/postit1.svg" alt />
-          <img src="../assets/img/SVG/postit2.svg" alt />
-          <img src="../assets/img/SVG/postit3.svg" alt />
-          <img src="../assets/img/SVG/postit4.svg" alt />
+          <img src="@/assets/img/SVG/postit1.svg" alt />
+          <img src="@/assets/img/SVG/postit2.svg" alt />
+          <img src="@/assets/img/SVG/postit3.svg" alt />
+          <img src="@/assets/img/SVG/postit4.svg" alt />
         </div>
       </div>
       <h2 class="result-header">3D models</h2>
@@ -17,7 +17,7 @@
   </div>
 </template>
 <style lang="scss">
-@import "../assets/sass/_global.scss";
+@import "@/assets/sass/_global.scss";
 
 $transition: all 0.1s ease-in;
 
