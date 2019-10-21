@@ -1,5 +1,5 @@
 <template>
-  <div class="slider">
+  <div class="slider" :id="sliderID">
     <div class="nav-right">
       <button class="nav-slider-button" v-on:click="next">
         <svg class="arrow-slider" viewBox="0 0 23.75 4.71">
@@ -28,8 +28,8 @@
       </button>
     </div>
     <div class="nav-overview">
-      <svg class="navigation-bar" viewBox="-10 0 262 31">
-        <line x1="-5" y1="13.98" x2="248" y2="13.98" stroke="black"/>
+      <svg class="navigation-bar" :viewBox="getViewBox()">
+        <line x1="-5" y1="13.98" :x2="lengthOfLine" y2="13.98" stroke="black"/>
         <circle
           v-for="(image, key) in images"
           v-bind:key="image.id"
@@ -129,10 +129,6 @@
 }
 
 .slider {
-  grid-row-start: 6;
-  grid-row-end: 19;
-  grid-column-start: 2;
-  grid-column-end: 24;
   display: grid;
   grid-template-columns: repeat(24, 4.1667%);
   grid-template-rows: repeat(16, 6.25%);
@@ -255,21 +251,27 @@ export default {
   name: "Slider",
   props: {
     images: Array,
+    sliderID: String,
   },
   data() {
     const radius= 8;
-    const lengthOfLine = radius * 2 * this.images.length + (70 * this.images.length - 2);
-    const x = lengthOfLine - 2 * parseInt(radius);
-    const y = this.images.length - 2 + 1;
+    const factor = 350;
+    const lengthOfLine = factor - (factor/this.images.length);
+    const len = factor/this.images.length;
 
     return {
       index: 0,
-      len: x / y,
+      len,
+      lengthOfLine,
+      radius
     };
   },
   methods: {
     getIndicatorXPosition(index) {
-      return this.len * index + index
+      return (this.len * index)
+    },
+    getViewBox(){
+      return "-10 0 " + (this.lengthOfLine + 2 * this.radius + 3) + " 31";
     },
     next() {
       const index = this.index + 1;

@@ -3,7 +3,7 @@
     <h2>Process</h2>
     <div class="process-wrapper">
       <CaseTextSection
-        sectionClass = "case-text-section inspiration-nmg"
+        sectionClass="case-text-section inspiration-nmg"
         sectionHeaderClass="case-section-header header-inspiration-nmg"
         headertext="Inspiration"
         textClass="inspiration-text-nmg"
@@ -11,9 +11,9 @@
           Also inspiration from premium and retro products. And of course inspiration
           from Nørremadegaard itself."
       />
-      <Slider :images="sliderImages" />
+      <Slider :images="sliderImages" sliderID="slider-insp-nmg" />
       <CaseTextSection
-        sectionClass = "case-text-section experimentation-nmg"
+        sectionClass="case-text-section experimentation-nmg"
         sectionHeaderClass="case-section-header header-experimentation-nmg"
         headertext="Experimentation"
         textClass="experimentation-text-nmg"
@@ -27,8 +27,8 @@
       <img class="nmg-exp2" src="../assets/img/exp2-100.jpg" alt />
       <img class="nmg-exp3" src="../assets/img/exp3-100.jpg" alt />
 
-       <CaseTextSection
-        sectionClass = "case-text-section styletiles-nmg"
+      <CaseTextSection
+        sectionClass="case-text-section styletiles-nmg"
         sectionHeaderClass="case-section-header header-styletiles-nmg"
         headertext="Styletiles"
         textClass="styletiles-text-nmg"
@@ -56,17 +56,23 @@
   grid-column-gap: 1vw;
   margin: 0 1vw;
 
-   .inspiration-nmg{
+  .inspiration-nmg {
     grid-row-start: 2;
-    grid-column-start: 1
+    grid-column-start: 1;
   }
-   .experimentation-nmg{
+  .experimentation-nmg {
     grid-row-start: 25;
-    grid-column-start: 1
+    grid-column-start: 1;
   }
-  .styletiles-nmg{
+  .styletiles-nmg {
     grid-row-start: 58;
-    grid-column-start: 1
+    grid-column-start: 1;
+  }
+  #slider-insp-nmg {
+    grid-row-start: 6;
+    grid-row-end: 19;
+    grid-column-start: 2;
+    grid-column-end: 24;
   }
   .nmg-exp1 {
     width: 100%;
@@ -97,9 +103,9 @@
 <script>
 import Slider from "@/components/Slider.vue";
 import CaseTextSection from "@/components/CaseTextSection.vue";
-import sliderImageOne from '@/assets/img/nmg-premium.jpg'
-import sliderImageTwo from '@/assets/img/nmg-retro.jpg'
-import sliderImageThree from '@/assets/img/mood-nmg-100.jpg'
+import sliderImageOne from "@/assets/img/nmg-premium.jpg";
+import sliderImageTwo from "@/assets/img/nmg-retro.jpg";
+import sliderImageThree from "@/assets/img/mood-nmg-100.jpg";
 
 export default {
   name: "CasesProcessNMG",
@@ -108,18 +114,18 @@ export default {
       sliderImages: [
         {
           path: sliderImageOne,
-          altText: "premium inspiration",
+          altText: "premium inspiration"
         },
         {
           path: sliderImageTwo,
-          altText: "retro inspiration",
+          altText: "retro inspiration"
         },
         {
           path: sliderImageThree,
-          altText: "mood inspiration",
+          altText: "mood inspiration"
         }
       ]
-    }
+    };
   },
   components: {
     Slider,

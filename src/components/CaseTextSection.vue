@@ -46,6 +46,9 @@ p.experimentation-text-nmg {
 p.experimentation-text-hesehus {
     grid-column-end: 8;
 }
+.inspiration-text-skansing{
+  grid-column-end: 8;
+}
 }
 </style>
 <script>

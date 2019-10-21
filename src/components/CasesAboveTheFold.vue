@@ -28,7 +28,7 @@
 <style lang="scss">
 $transition: all 0.1s ease-in;
 .case-nmg div h1 {
-    font-size: 199px;
+    font-size: 10vw;
 }
 .above-the-fold {
   display: grid;

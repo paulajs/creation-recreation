@@ -85,13 +85,13 @@
     }
 
     img.mobile-mock1 {
-      grid-column-start: 7;
-      grid-column-end: 13;
+      grid-column-start: 6;
+      grid-column-end: 12;
       grid-row-start: 3;
     }
     img.mobile-mock2 {
-      grid-column-start: 13;
-      grid-column-end: 19;
+      grid-column-start: 14;
+      grid-column-end: 20;
       grid-row-start: 3;
     }
   }
