@@ -1,7 +1,7 @@
 <template>
   <div class="slider" :id="sliderID">
     <div class="nav-right">
-      <button class="nav-slider-button" v-on:click="next">
+      <button class="nav-slider-button" v-on:click="next" ref="nextbutton">
         <svg class="arrow-slider" viewBox="0 0 23.75 4.71">
           <polygon
             points="23.75 2.35 14.98 0 14.98 1.6 0 1.6 0 3.1 14.98 3.1 14.98 4.71 23.75 2.35"
@@ -20,7 +20,7 @@
       />
     </div>
     <div class="nav-left">
-      <button class="nav-slider-button" v-on:click="previous">
+      <button class="nav-slider-button" v-on:click="previous" ref="prevbutton">
         <svg class="arrow-slider" viewBox="0 0 23.75 4.71">
           <polygon points="0 2.35 8.78 4.71 8.78 3.1 23.75 3.1 23.75 1.6 8.78 1.6 8.78 0 0 2.35" />
         </svg>
@@ -47,9 +47,9 @@
 .nav-slider-button {
   background: #000;
   border: none;
-  border-radius: 100%;
   width: 70px;
   height: 70px;
+  border-radius: 100%;
   position: relative;
   border: none;
   display: flex;
@@ -66,26 +66,26 @@
   }
   &:hover {
     cursor: pointer;
-    border: 2px solid #ff00ff;
+    border: 2px solid $color-pink;
     background: white;
     transform: scale(1.2);
     transition: all 0.2s ease-in;
     &::after {
-      border: 2px solid #00ff66;
-      animation: rumble 0.3s ease-in 2;
+      border: 2px solid $color-green;
+      animation: rumble 0.3s ease-in 3;
     }
 
     .nav-slider-button-text::after {
       content: attr(data-text);
       position: absolute;
-      color: #00ff66;
+      color: $color-green;
       left: 3%;
       top: 4%;
-      animation: rumble 0.3s ease-in 2;
+      animation: rumble 0.3s ease-in 3;
     }
 
     .nav-slider-button-text {
-      color: #ff00ff;
+      color: $color-pink;
     }
     svg.arrow {
       animation: arrowHide 0.2s ease forwards;
@@ -99,8 +99,8 @@
     content: "";
     width: 70px;
     height: 70px;
-    border: none;
     border-radius: 100%;
+    border: none;
     background: transparent;
   }
   &:focus {
@@ -111,9 +111,9 @@
 .arrow-slider {
   width: 69%;
   fill: white;
+  position: absolute;
   top: 50%;
   left: 50%;
-  position: absolute;
   transform: translate(-50%, -50%);
   transition: all 0.2s ease-in;
 }
@@ -274,6 +274,12 @@ export default {
       return "-10 0 " + (this.lengthOfLine + 2 * this.radius + 3) + " 31";
     },
     next() {
+      let button = this.$refs.nextbutton
+      button.classList.add('clickAnim');
+      setTimeout(function(){
+        button.classList.remove('clickAnim');
+      }, 500);
+
       const index = this.index + 1;
       if (index == this.images.length) {
         this.index = 0;
@@ -282,6 +288,12 @@ export default {
       }
     },
     previous() {
+      let button = this.$refs.prevbutton
+      button.classList.add('clickAnim');
+      setTimeout(function(){
+        button.classList.remove('clickAnim');
+      }, 500);
+
       const index = this.index - 1;
       if (index < 0) {
         this.index = this.images.length - 1;
