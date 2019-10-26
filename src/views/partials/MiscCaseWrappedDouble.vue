@@ -91,7 +91,6 @@ div {
 }
 </style>
 <script>
-import MiscCaseAudioSVG from '@/components/svg/MiscCaseAudioSVG.vue'
 export default {
   name: "MiscCaseWrappedDouble",
   props: {

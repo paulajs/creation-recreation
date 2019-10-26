@@ -2,8 +2,8 @@
   <div class="case-process-hesehus">
     <h2>Process</h2>
     <div class="process-wrapper">
-       <CaseTextSection
-        sectionClass = "case-text-section inspiration-hesehus"
+      <CaseTextSection
+        sectionClass="case-text-section inspiration-hesehus"
         sectionHeaderClass="case-section-header"
         headertext="Inspiration"
         textClass="inspiration-text-hesehus"
@@ -13,7 +13,7 @@
       <img class="hesehus-indtryk" src="@/assets/img/hesehus-indtryk.jpg" alt />
       <img class="hesehus-messe" src="@/assets/img/hesehus-messe.jpg" alt />
       <CaseTextSection
-        sectionClass = "case-text-section experimentation-hesehus"
+        sectionClass="case-text-section experimentation-hesehus"
         sectionHeaderClass="case-section-header header-experimentation-hesehus"
         headertext="Experimentation"
         textClass="experimentation-text-hesehus"
@@ -26,7 +26,7 @@
       <img class="hesehus-ideation" src="@/assets/img/hesehus-ideation.jpg" alt />
 
       <CaseTextSection
-        sectionClass = "case-text-section storyboards-hesehus"
+        sectionClass="case-text-section storyboards-hesehus"
         sectionHeaderClass="case-section-header header-storyboards-hesehus"
         headertext="Storyboards"
         textClass="storyboards-text-hesehus"
@@ -47,7 +47,7 @@
 </template>
 <style lang="scss">
 .case-process-hesehus {
-  h2{
+  h2 {
     font-family: "Poppins", sans-serif;
     font-size: 150px;
     color: black;
@@ -64,17 +64,17 @@
     grid-column-gap: 1vw;
     margin: 0 1vw;
 
-    .inspiration-hesehus{
+    .inspiration-hesehus {
       grid-row-start: 2;
-      grid-column-start: 1
+      grid-column-start: 1;
     }
-    .experimentation-hesehus{
+    .experimentation-hesehus {
       grid-row-start: 21;
-      grid-column-start: 1
+      grid-column-start: 1;
     }
-    .storyboards-hesehus{
+    .storyboards-hesehus {
       grid-row-start: 63;
-      grid-column-start: 1
+      grid-column-start: 1;
     }
 
     p {
@@ -83,12 +83,15 @@
     }
     .hesehus-indtryk {
       grid-row-start: 6;
+      width: 100%;
       grid-column-start: 2;
+      grid-column-end: 14;
     }
     .hesehus-messe {
       grid-row-start: 6;
       grid-column-start: 14;
-      height: 635px;
+      width: 100%;
+      grid-column-end: 24;
     }
     .hesehus-boat {
       grid-row-start: 25;
@@ -126,7 +129,7 @@ import CaseTextSection from "@/components/CaseTextSection.vue";
 export default {
   name: "CasesProcessHesehus",
   components: {
-    CaseTextSection,
+    CaseTextSection
   }
 };
 </script>

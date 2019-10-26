@@ -151,15 +151,15 @@ import HomeButton from "@/components/HomeButton.vue";
 import MiscCaseWrappedDouble from "@/views/partials/MiscCaseWrappedDouble.vue";
 import MiscCaseSingle from "@/views/partials/MiscCaseSingle.vue";
 import MiscCaseDouble from "@/views/partials/MiscCaseDouble.vue";
-import MiscCaseAudioSVG from "@/components/svg/MiscCaseAudioSVG.vue";
-import MiscCaseSpaceSVG from "@/components/svg/MiscCaseSpaceSVG.vue";
-import MiscCaseAdamsSVG from "@/components/svg/MiscCaseAdamsSVG.vue";
-import MiscCaseBunnySVG from "@/components/svg/MiscCaseBunnySVG.vue";
-import MiscCaseThreeSVG from "@/components/svg/MiscCaseThreeSVG.vue";
-import MiscCaseRippleSVG from "@/components/svg/MiscCaseRippleSVG.vue";
-import MiscCaseCSSSVG from "@/components/svg/MiscCaseCSSSVG.vue";
-import MiscCaseHorrorSVG from "@/components/svg/MiscCaseHorrorSVG.vue";
-import MiscCaseDrawSVG from "@/components/svg/MiscCaseDrawSVG.vue";
+import MiscCaseAudioSVG from "@/components/svg/MiscCaseAudio.vue";
+import MiscCaseSpaceSVG from "@/components/svg/MiscCaseSpace.vue";
+import MiscCaseAdamsSVG from "@/components/svg/MiscCaseAdams.vue";
+import MiscCaseBunnySVG from "@/components/svg/MiscCaseBunny.vue";
+import MiscCaseThreeSVG from "@/components/svg/MiscCaseThree.vue";
+import MiscCaseRippleSVG from "@/components/svg/MiscCaseRipple.vue";
+import MiscCaseCSSSVG from "@/components/svg/MiscCaseCSS.vue";
+import MiscCaseHorrorSVG from "@/components/svg/MiscCaseHorror.vue";
+import MiscCaseDrawSVG from "@/components/svg/MiscCaseDraw.vue";
 export default {
   components: {
     HomeButton,

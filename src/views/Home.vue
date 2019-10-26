@@ -1,16 +1,16 @@
 <template>
-  <div class="home" @mouseover="cursorMove">
+  <div class="home">
     <router-link to="/about" class="menu menu-about">
       <button class="menu-button">
         <p data-text="About">About</p>
       </button>
     </router-link>
     <div class="frontpage-label top">Digital web ninja</div>
-    <button class="menu menu-cases menu-button" @click="toggleCaseMenu">
+      <button class="menu menu-cases menu-button" @click="toggleCaseMenu">
       <p data-text="Cases">Cases</p>
     </button>
     <ul class="cases-sub-menu">
-      <li @mouseover="hoverOverLink" @mouseout="leaveLink">
+      <li>
         <router-link to="/hesehus">Hesehus</router-link>
       </li>
       <li>
@@ -45,7 +45,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import FrontpageEntertainment from "@/components/FrontpageEntertainment.vue";
 
 export default {
@@ -54,43 +53,8 @@ export default {
     FrontpageEntertainment
   },
   methods: {
-    hoverOverLink: function(){
-      //conditional rendering - v-if
-      console.log('hover link');
-      document.querySelector('.case-videos').style.display = "block";
-      document.querySelector('.entertain-element').style.border = "1px solid black";
-      document.querySelector('#container').style.display = "none";
-      document.querySelector('.page-logo').style.display = "none";
-    },
-    leaveLink: function(){
-      document.querySelector('.case-videos').style.display = "none";
-      document.querySelector('.entertain-element').style.border = "none";
-      document.querySelector('#container').style.display = "block";
-      document.querySelector('.page-logo').style.display = "block";
-    },
-    expandCursor: function() {
-      cursor.classList.add("expand");
-      setTimeout(() => {
-        cursor.classList.remove("expand");
-      }, 500);
-    },
-    buttonHover: function(e) {
-      const cursor = document.querySelector(".cursor");
-
-      cursor.style.zIndex = 42000;
-      cursor.style.display = "flex";
-    },
-    buttonUnHover: function() {
-      const cursor = document.querySelector(".cursor");
-      cursor.style.zIndex = 42000;
-      cursor.style.display = "none";
-    },
-    cursorMove: function(e) {
-      const cursor = document.querySelector(".cursor");
-      cursor.style.top = `${e.pageY - 35}px`;
-      cursor.style.left = `${e.pageX - 35}px`;
-    },
     toggleCaseMenu: function(e) {
+      // @todo refactor thisss
       var elem = document.querySelector(".cases-sub-menu");
       if (elem.style.display === "flex") {
         elem.style.display = "none";
@@ -98,7 +62,7 @@ export default {
         elem.style.display = "flex";
       }
     }
-  }
+   }
 };
 </script>
 
