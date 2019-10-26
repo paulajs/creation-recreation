@@ -72,7 +72,7 @@ div {
   position: relative;
   .header-css-anim {
     position: absolute;
-    bottom: 3vh;
+    bottom: 2.5vh;
     width: 100%;
     text-align: center;
     .text-css {

@@ -1,6 +1,7 @@
 <template>
   <div :class="miscCaseClass">
     <div class="misc-background"></div>
+    <img :class="stars" src="../../assets/img/SVG/stars.svg" alt="stars">
     <div :class="headerClass">
       <h2>{{headerText}}</h2>
     </div>
@@ -15,6 +16,16 @@ div {
     width: 100%;
     height: 100%;
   }
+}
+.yes{
+  position: absolute;
+  top: 0;
+  display: block;
+}
+.no{
+  position: absolute;
+  top: 0;
+  display: none;
 }
 .misc-case2 {
   @include place-in-grid(1, 5, 4, 10);
@@ -87,13 +98,13 @@ div {
     .header-draw {
       @include header-style(uppercase);
       @include centerX();
-      background: $color-pink;
+      background: $color-green;
       border: 1px solid black;
       position: absolute;
-      top: 2vh;
-      width: 77%;
+      top: 3vh;
+      width: 86%;
       text-align: center;
-      font-size: 1.4vw;
+      font-size: 1.8vw;
     }
     .misc-background {
       @include misc-background(right, 0%, 110%, 0.6);
@@ -106,7 +117,8 @@ export default {
   props: {
     miscCaseClass: String,
     headerClass: String,
-    headerText: String
+    headerText: String,
+    stars: String
   }
 };
 </script>
