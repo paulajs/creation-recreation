@@ -10,7 +10,7 @@
       <p data-text="Cases">Cases</p>
     </button>
     <ul class="cases-sub-menu">
-      <li>
+      <li @mouseover="hoverOverLink" @mouseout="leaveLink">
         <router-link to="/hesehus">Hesehus</router-link>
       </li>
       <li>
@@ -61,7 +61,19 @@ export default {
       } else {
         elem.style.display = "flex";
       }
-    }
+    },
+    hoverOverLink: function(){
+      document.querySelector('.case-videos').style.display = "block";
+      document.querySelector('.entertain-element').style.border = "1px solid black";
+      document.querySelector('#container').style.display = "none";
+      document.querySelector('.page-logo').style.display = "none";
+    },
+    leaveLink: function(){
+      document.querySelector('.case-videos').style.display = "none";
+      document.querySelector('.entertain-element').style.border = "none";
+      document.querySelector('#container').style.display = "block";
+      document.querySelector('.page-logo').style.display = "block";
+    },
    }
 };
 </script>
